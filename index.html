@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h1 id="authTitle">Welcome to Chat</h1>
+            <div class="login-form">
+                <input type="text" id="userCode" maxlength="5" placeholder="Enter 5-digit code" class="login-input" required pattern="[0-9]{5}">
+                <input type="text" id="username" placeholder="Choose a username" class="login-input" required minlength="3">
+                <div class="login-buttons">
+                    <button id="loginButton" class="login-button">
+                        <i class="fas fa-sign-in-alt"></i> <span id="authButtonText">Login</span>
+                    </button>
+                </div>
+                <div class="auth-toggle">
+                    <span id="authToggleText">Don't have an account?</span>
+                    <button id="toggleAuthButton" class="toggle-button">Register</button>
+                </div>
+                <div id="loginMessage" class="login-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <div class="chat-app" id="chatPage" style="display: none;">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-info">
+                    <span id="currentUserDisplay"></span>
+                    <span id="currentCodeDisplay"></span>
+                </div>
+                <div class="header-buttons">
+                    <button id="addContactBtn" class="icon-button">
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                    <button id="deleteAccountBtn" class="icon-button danger">
+                        <i class="fas fa-user-times"></i>
+                    </button>
+                    <button id="logoutButton" class="icon-button">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="contact-list" id="contactList">
+                <!-- Contacts will be listed here -->
+            </div>
+            <button class="add-contact-btn" id="addContactBtn">
+                <i class="fas fa-user-plus"></i> Add Contact
+            </button>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <h2 id="currentChatName">Select a contact</h2>
+                </div>
+            </div>
+            <div class="chat-messages" id="messageArea">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="messageInput" placeholder="Type a message..." class="message-input">
+                <button id="sendButton" class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Contact Modal -->
+    <div class="modal" id="addContactModal">
+        <div class="modal-content">
+            <h2>Add New Contact</h2>
+            <input type="text" id="contactCode" maxlength="5" placeholder="Enter contact's 5-digit code" class="modal-input">
+            <div class="modal-buttons">
+                <button id="cancelAddContact" class="modal-button cancel">Cancel</button>
+                <button id="confirmAddContact" class="modal-button confirm">Add Contact</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Account Confirmation Modal -->
+    <div id="deleteAccountModal" class="modal">
+        <div class="modal-content">
+            <h2>Delete Account</h2>
+            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+            <div class="modal-buttons">
+                <button id="confirmDeleteAccount" class="danger">Delete Account</button>
+                <button id="cancelDeleteAccount">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Context Menu -->
+    <div id="messageContextMenu" class="context-menu">
+        <div class="menu-item delete-message">Delete Message</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
