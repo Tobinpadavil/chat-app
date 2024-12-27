@@ -1,0 +1,653 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #111b21;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Page Styles */
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111b21;
+}
+
+.login-box {
+    background: #202c33;
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-box h1 {
+    color: #e9edef;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-input {
+    padding: 12px;
+    border: 1px solid #2a3942;
+    border-radius: 8px;
+    background: #2a3942;
+    color: #e9edef;
+    font-size: 16px;
+}
+
+.login-button {
+    padding: 12px;
+    background: #00a884;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.login-button:hover {
+    background: #008f72;
+}
+
+.login-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background: #00a884;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-button:hover {
+    background: #008f72;
+    transform: translateY(-1px);
+}
+
+.login-button:active {
+    transform: translateY(1px);
+}
+
+.login-button i {
+    font-size: 18px;
+}
+
+.login-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.login-message.error {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4444;
+}
+
+.login-message.success {
+    background: rgba(0, 255, 0, 0.1);
+    color: #00a884;
+}
+
+.login-input:invalid {
+    border-color: #ff4444;
+}
+
+/* Main Chat App Styles */
+.chat-app {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: #111b21;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 300px;
+    background: #202c33;
+    border-right: 1px solid #2a3942;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 15px 20px;
+    background: #202c33;
+    border-bottom: 1px solid #2a3942;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-name {
+    color: #e9edef;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.user-code {
+    color: #8696a0;
+    font-size: 14px;
+}
+
+.contact-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.contact-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contact-item:hover {
+    background: #2a3942;
+}
+
+.contact-item.active {
+    background: #2a3942;
+}
+
+.add-contact-btn {
+    margin: 15px;
+    padding: 12px;
+    background: #00a884;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.add-contact-btn:hover {
+    background: #008f72;
+}
+
+/* Chat Container Styles */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #111b21;
+}
+
+.chat-header {
+    padding: 20px;
+    background: #202c33;
+    border-bottom: 1px solid #2a3942;
+}
+
+.chat-header-info h2 {
+    color: #e9edef;
+    font-size: 16px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #0b141a;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.message.received {
+    background: #202c33;
+    color: #e9edef;
+    margin-right: auto;
+}
+
+.message.sent {
+    background: #005c4b;
+    color: #e9edef;
+    margin-left: auto;
+}
+
+.chat-input-area {
+    padding: 15px;
+    background: #202c33;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.message-input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2a3942;
+    color: #e9edef;
+    font-size: 15px;
+}
+
+.send-button {
+    padding: 12px;
+    background: transparent;
+    color: #00a884;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.send-button:hover {
+    color: #008f72;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 20, 26, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #202c33;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal-content h2 {
+    color: #e9edef;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #2a3942;
+    border-radius: 8px;
+    background: #2a3942;
+    color: #e9edef;
+    font-size: 15px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.modal-button.cancel {
+    background: #2a3942;
+    color: #e9edef;
+}
+
+.modal-button.confirm {
+    background: #00a884;
+    color: white;
+}
+
+.modal-button.confirm:hover {
+    background: #008f72;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #00a884;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-out 2.7s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.logout-button {
+    background: transparent;
+    border: none;
+    color: #8696a0;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    color: #e9edef;
+    background: #2a3942;
+}
+
+.auth-toggle {
+    margin-top: 15px;
+    color: #8696a0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: #00a884;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+    background: rgba(0, 168, 132, 0.1);
+    transform: translateY(-1px);
+}
+
+.toggle-button:active {
+    transform: translateY(1px);
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-sender {
+    font-size: 12px;
+    color: #8696a0;
+    margin-bottom: 2px;
+}
+
+.message-time {
+    font-size: 11px;
+    color: #8696a0;
+    align-self: flex-end;
+    margin-top: 2px;
+}
+
+.notification.error {
+    background: #ff4444;
+    color: white;
+}
+
+.icon-button.danger {
+    color: #e74c3c;
+}
+
+.icon-button.danger:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Context Menu */
+.context-menu {
+    display: none;
+    position: fixed;
+    background: #2a3942;
+    border: 1px solid #374045;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.menu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #e9edef;
+    font-size: 14px;
+}
+
+.menu-item:hover {
+    background-color: #374045;
+}
+
+.menu-item.delete-message {
+    color: #e74c3c;
+}
+
+.menu-item.delete-message:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Delete Account Modal */
+#deleteAccountModal .modal-content {
+    max-width: 400px;
+}
+
+#deleteAccountModal h2 {
+    color: #e74c3c;
+    margin-bottom: 16px;
+}
+
+#deleteAccountModal p {
+    margin-bottom: 24px;
+    color: #e9edef;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal-buttons button.danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.modal-buttons button.danger:hover {
+    background-color: #c0392b;
+}
+
+.modal-buttons button:not(.danger) {
+    background-color: #374045;
+    color: #e9edef;
+}
+
+.modal-buttons button:not(.danger):hover {
+    background-color: #2a3942;
+}
+
+.contact-info {
+    flex: 1;
+    cursor: pointer;
+}
+
+.delete-contact-btn {
+    background: transparent;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .delete-contact-btn {
+    opacity: 1;
+}
+
+.delete-contact-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Sidebar Header and Button Styles */
+.sidebar-header {
+    padding: 15px 20px;
+    background: #202c33;
+    border-bottom: 1px solid #2a3942;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user-info #currentUserDisplay {
+    color: #e9edef;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.user-info #currentCodeDisplay {
+    color: #8696a0;
+    font-size: 14px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    color: #8696a0;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.icon-button:hover {
+    background: #374045;
+    color: #e9edef;
+    transform: scale(1.1);
+}
+
+.icon-button:active {
+    transform: scale(0.95);
+}
+
+.icon-button.danger {
+    color: #e74c3c;
+}
+
+.icon-button.danger:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Remove duplicate styles */
+.logout-button,
+.user-profile,
+.sidebar-header:not(:first-of-type) {
+    display: none;
+}

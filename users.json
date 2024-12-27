@@ -1,0 +1,52 @@
+{
+    "users": {
+        "12345": {
+            "username": "User A"
+        },
+        "54321": {
+            "username": "User B"
+        }
+    },
+    "contacts": {
+        "12345": [
+            "54321"
+        ],
+        "54321": [
+            "12345"
+        ]
+    },
+    "messages": {
+        "12345": {
+            "54321": [
+                {
+                    "from": "12345",
+                    "fromUsername": "User A",
+                    "message": "hi",
+                    "timestamp": "2024-12-27T09:23:16.808Z"
+                },
+                {
+                    "from": "54321",
+                    "fromUsername": "User B",
+                    "message": "hello",
+                    "timestamp": "2024-12-27T09:23:29.833Z"
+                }
+            ]
+        },
+        "54321": {
+            "12345": [
+                {
+                    "from": "12345",
+                    "fromUsername": "User A",
+                    "message": "hi",
+                    "timestamp": "2024-12-27T09:23:16.808Z"
+                },
+                {
+                    "from": "54321",
+                    "fromUsername": "User B",
+                    "message": "hello",
+                    "timestamp": "2024-12-27T09:23:29.833Z"
+                }
+            ]
+        }
+    }
+}
